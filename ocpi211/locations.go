@@ -109,60 +109,22 @@ const (
 	FacilityWifi           Facility = "WIFI"
 )
 
-type Weekday int
+type DayOfWeekNumber int
 
 const (
-	WeekdayMonday    Weekday = 1
-	WeekdayTuesday   Weekday = 2
-	WeekdayWednesday Weekday = 3
-	WeekdayThursday  Weekday = 4
-	WeekdayFriday    Weekday = 5
-	WeekdaySaturday  Weekday = 6
-	WeekdaySunday    Weekday = 7
+	DayOfWeekNumberMonday    DayOfWeekNumber = 1
+	DayOfWeekNumberTuesday   DayOfWeekNumber = 2
+	DayOfWeekNumberWednesday DayOfWeekNumber = 3
+	DayOfWeekNumberThursday  DayOfWeekNumber = 4
+	DayOfWeekNumberFriday    DayOfWeekNumber = 5
+	DayOfWeekNumberSaturday  DayOfWeekNumber = 6
+	DayOfWeekNumberSunday    DayOfWeekNumber = 7
 )
-
-type EnergySourceCategory string
-
-const (
-	EnergySourceCategoryNuclear       EnergySourceCategory = "NUCLEAR"
-	EnergySourceCategoryGeneralFossil EnergySourceCategory = "GENERAL_FOSSIL"
-	EnergySourceCategoryCoal          EnergySourceCategory = "COAL"
-	EnergySourceCategoryGas           EnergySourceCategory = "GAS"
-	EnergySourceCategoryGeneralGreen  EnergySourceCategory = "GENERAL_GREEN"
-	EnergySourceCategorySolar         EnergySourceCategory = "SOLAR"
-	EnergySourceCategoryWind          EnergySourceCategory = "WIND"
-	EnergySourceCategoryWater         EnergySourceCategory = "WATER"
-)
-
-type EnvironmentalImpactCategory string
-
-const (
-	EnvironmentalImpactCategoryNuclearWaste  EnvironmentalImpactCategory = "NUCLEAR_WASTE"
-	EnvironmentalImpactCategoryCarbonDioxide EnvironmentalImpactCategory = "CARBON_DIOXIDE"
-)
-
-type EnvironmentalImpact struct {
-	Source     EnvironmentalImpactCategory `json:"source"`
-	Percentage int                         `json:"percentage"`
-}
-
-type EnergySource struct {
-	Source     EnergySourceCategory `json:"source"`
-	Percentage int                  `json:"percentage"`
-}
-
-type EnergyMix struct {
-	IsGreenEnergy       bool                  `json:"is_green_energy"`
-	EnergySources       []EnergySource        `json:"energy_sources,omitempty"`
-	EnvironmentalImpact []EnvironmentalImpact `json:"environ_impact,omitempty"`
-	SupplierName        *string               `json:"supplier_name,omitempty"`
-	EnergyProductName   *string               `json:"energy_product_name,omitempty"`
-}
 
 type RegularHours struct {
-	PeriodBegin string  `json:"period_begin"`
-	PeriodEnd   string  `json:"period_end"`
-	Weekday     Weekday `json:"weekday"`
+	PeriodBegin string          `json:"period_begin"`
+	PeriodEnd   string          `json:"period_end"`
+	Weekday     DayOfWeekNumber `json:"weekday"`
 }
 
 type ExceptionalPeriod struct {
@@ -192,11 +154,6 @@ type AdditionalGeoLocation struct {
 	Latitude  string       `json:"latitude"`
 	Longitude string       `json:"longitude"`
 	Name      *DisplayText `json:"name,omitempty"`
-}
-
-type DisplayText struct {
-	Language string `json:"language"`
-	Text     string `json:"text"`
 }
 
 type Connector struct {
