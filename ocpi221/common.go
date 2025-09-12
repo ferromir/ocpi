@@ -2,6 +2,8 @@ package ocpi221
 
 import "time"
 
+// import "time"
+
 type TokenType string
 
 const (
@@ -46,12 +48,19 @@ const (
 type DimensionType string
 
 const (
-	DimensionTypeEnergy      DimensionType = "ENERGY"
-	DimensionTypeFlat        DimensionType = "FLAT"
-	DimensionTypeMaxCurrent  DimensionType = "MAX_CURRENT"
-	DimensionTypeMinCurrent  DimensionType = "MIN_CURRENT"
-	DimensionTypeParkingTime DimensionType = "PARKING_TIME"
-	DimensionTypeTime        DimensionType = "TIME"
+	DimensionTypeCurrent         DimensionType = "CURRENT"
+	DimensionTypeEnergy          DimensionType = "ENERGY"
+	DimensionTypeEnergyExport    DimensionType = "ENERGY_EXPORT"
+	DimensionTypeEnergyImport    DimensionType = "ENERGY_IMPORT"
+	DimensionTypeMaxCurrent      DimensionType = "MAX_CURRENT"
+	DimensionTypeMinCurrent      DimensionType = "MIN_CURRENT"
+	DimensionTypeMaxPower        DimensionType = "MAX_POWER"
+	DimensionTypeMinPower        DimensionType = "MIN_POWER"
+	DimensionTypeParkingTime     DimensionType = "PARKING_TIME"
+	DimensionTypePower           DimensionType = "POWER"
+	DimensionTypeReservationTime DimensionType = "RESERVATION_TIME"
+	DimensionTypeStateOfCharge   DimensionType = "STATE_OF_CHARGE"
+	DimensionTypeTime            DimensionType = "TIME"
 )
 
 type AuthMethod string
@@ -70,11 +79,12 @@ type Dimension struct {
 type ChargingPeriod struct {
 	StartDateTime time.Time   `json:"start_date_time"`
 	Dimensions    []Dimension `json:"dimensions"`
+	TariffId      *string     `json:"tariff_id"`
 }
 
 type EnvironmentalImpact struct {
-	Source     EnvironmentalImpactCategory `json:"source"`
-	Percentage float64                     `json:"percentage"`
+	Category EnvironmentalImpactCategory `json:"category"`
+	Amount   float64                     `json:"amount"`
 }
 
 type EnergySource struct {
@@ -118,26 +128,46 @@ type GeoLocation struct {
 type ConnectorType string
 
 const (
-	ConnectorTypeCHAdeMO          ConnectorType = "CHADEMO"
-	ConnectorTypeIEC62196Type1    ConnectorType = "IEC_62196_T1"
-	ConnectorTypeIEC62196Type1CCS ConnectorType = "IEC_62196_T1_COMBO"
-	ConnectorTypeIEC62196Type2    ConnectorType = "IEC_62196_T2"
-	ConnectorTypeIEC62196Type2CCS ConnectorType = "IEC_62196_T2_COMBO"
-	ConnectorTypeIEC62196Type3    ConnectorType = "IEC_62196_T3A"
-	ConnectorTypeDomesticA        ConnectorType = "DOMESTIC_A"
-	ConnectorTypeDomesticB        ConnectorType = "DOMESTIC_B"
-	ConnectorTypeDomesticC        ConnectorType = "DOMESTIC_C"
-	ConnectorTypeDomesticD        ConnectorType = "DOMESTIC_D"
-	ConnectorTypeDomesticE        ConnectorType = "DOMESTIC_E"
-	ConnectorTypeDomesticF        ConnectorType = "DOMESTIC_F"
-	ConnectorTypeDomesticG        ConnectorType = "DOMESTIC_G"
-	ConnectorTypeDomesticH        ConnectorType = "DOMESTIC_H"
-	ConnectorTypeDomesticI        ConnectorType = "DOMESTIC_I"
-	ConnectorTypeDomesticJ        ConnectorType = "DOMESTIC_J"
-	ConnectorTypeDomesticK        ConnectorType = "DOMESTIC_K"
-	ConnectorTypeDomesticL        ConnectorType = "DOMESTIC_L"
-	ConnectorTypeTeslaR           ConnectorType = "TESLA_R"
-	ConnectorTypeTeslaS           ConnectorType = "TESLA_S"
+	ConnectorTypeCHADEMO               ConnectorType = "CHADEMO"
+	ConnectorTypeCHAOJI                ConnectorType = "CHAOJI"
+	ConnectorTypeDOMESTIC_A            ConnectorType = "DOMESTIC_A"
+	ConnectorTypeDOMESTIC_B            ConnectorType = "DOMESTIC_B"
+	ConnectorTypeDOMESTIC_C            ConnectorType = "DOMESTIC_C"
+	ConnectorTypeDOMESTIC_D            ConnectorType = "DOMESTIC_D"
+	ConnectorTypeDOMESTIC_E            ConnectorType = "DOMESTIC_E"
+	ConnectorTypeDOMESTIC_F            ConnectorType = "DOMESTIC_F"
+	ConnectorTypeDOMESTIC_G            ConnectorType = "DOMESTIC_G"
+	ConnectorTypeDOMESTIC_H            ConnectorType = "DOMESTIC_H"
+	ConnectorTypeDOMESTIC_I            ConnectorType = "DOMESTIC_I"
+	ConnectorTypeDOMESTIC_J            ConnectorType = "DOMESTIC_J"
+	ConnectorTypeDOMESTIC_K            ConnectorType = "DOMESTIC_K"
+	ConnectorTypeDOMESTIC_L            ConnectorType = "DOMESTIC_L"
+	ConnectorTypeDOMESTIC_M            ConnectorType = "DOMESTIC_M"
+	ConnectorTypeDOMESTIC_N            ConnectorType = "DOMESTIC_N"
+	ConnectorTypeDOMESTIC_O            ConnectorType = "DOMESTIC_O"
+	ConnectorTypeGBT_AC                ConnectorType = "GBT_AC"
+	ConnectorTypeGBT_DC                ConnectorType = "GBT_DC"
+	ConnectorTypeIEC_60309_2_single_16 ConnectorType = "IEC_60309_2_single_16"
+	ConnectorTypeIEC_60309_2_three_16  ConnectorType = "IEC_60309_2_three_16"
+	ConnectorTypeIEC_60309_2_three_32  ConnectorType = "IEC_60309_2_three_32"
+	ConnectorTypeIEC_60309_2_three_64  ConnectorType = "IEC_60309_2_three_64"
+	ConnectorTypeIEC_62196_T1          ConnectorType = "IEC_62196_T1"
+	ConnectorTypeIEC_62196_T1_COMBO    ConnectorType = "IEC_62196_T1_COMBO"
+	ConnectorTypeIEC_62196_T2          ConnectorType = "IEC_62196_T2"
+	ConnectorTypeIEC_62196_T2_COMBO    ConnectorType = "IEC_62196_T2_COMBO"
+	ConnectorTypeIEC_62196_T3A         ConnectorType = "IEC_62196_T3A"
+	ConnectorTypeIEC_62196_T3C         ConnectorType = "IEC_62196_T3C"
+	ConnectorTypeNEMA_5_20             ConnectorType = "NEMA_5_20"
+	ConnectorTypeNEMA_6_30             ConnectorType = "NEMA_6_30"
+	ConnectorTypeNEMA_6_50             ConnectorType = "NEMA_6_50"
+	ConnectorTypeNEMA_10_30            ConnectorType = "NEMA_10_30"
+	ConnectorTypeNEMA_10_50            ConnectorType = "NEMA_10_50"
+	ConnectorTypeNEMA_14_30            ConnectorType = "NEMA_14_30"
+	ConnectorTypeNEMA_14_50            ConnectorType = "NEMA_14_50"
+	ConnectorTypePANTOGRAPH_BOTTOM_UP  ConnectorType = "PANTOGRAPH_BOTTOM_UP"
+	ConnectorTypePANTOGRAPH_TOP_DOWN   ConnectorType = "PANTOGRAPH_TOP_DOWN"
+	ConnectorTypeTESLA_R               ConnectorType = "TESLA_R"
+	ConnectorTypeTESLA_S               ConnectorType = "TESLA_S"
 )
 
 type ConnectorFormat string
@@ -150,9 +180,11 @@ const (
 type PowerType string
 
 const (
-	PowerTypeAC1Phase PowerType = "AC_1_PHASE"
-	PowerTypeAC3Phase PowerType = "AC_3_PHASE"
-	PowerTypeDC       PowerType = "DC"
+	PowerTypeAC1Phase      PowerType = "AC_1_PHASE"
+	PowerTypeAC2Phase      PowerType = "AC_2_PHASE"
+	PowerTypeAC2PhaseSplit PowerType = "AC_2_PHASE_SPLIT"
+	PowerTypeAC3Phase      PowerType = "AC_3_PHASE"
+	PowerTypeDC            PowerType = "DC"
 )
 
 type Price struct {

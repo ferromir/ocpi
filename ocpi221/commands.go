@@ -36,8 +36,8 @@ const (
 )
 
 type StartSession struct {
-	ResponseUrl            string            `json:"response_url"`
-	Token                  Token             `json:"token"`
+	ResponseUrl string `json:"response_url"`
+	// Token                  Token             `json:"token"`
 	LocationID             string            `json:"location_id"`
 	EvseUID                *string           `json:"evse_uid,omitempty"`
 	ConnectorID            *string           `json:"connector_id,omitempty"`
@@ -56,8 +56,8 @@ type CancelReservation struct {
 }
 
 type ReserveNow struct {
-	ResponseUrl            string    `json:"response_url"`
-	Token                  Token     `json:"token"`
+	ResponseUrl string `json:"response_url"`
+	// Token                  Token     `json:"token"`
 	ExpiryDate             time.Time `json:"expiry_date"`
 	ReservationID          int       `json:"reservation_id"`
 	LocationID             string    `json:"location_id"`
