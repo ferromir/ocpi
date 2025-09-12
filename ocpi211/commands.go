@@ -1,6 +1,8 @@
 package ocpi211
 
-import "time"
+import (
+	"time"
+)
 
 type CommandType string
 
@@ -30,30 +32,26 @@ type StartSession struct {
 }
 
 type StopSession struct {
-	ResponseUrl string            `json:"response_url"`
-	SessionID   string            `json:"session_id"`
-	Metadata    map[string]string `json:"metadata,omitempty"`
+	ResponseUrl string `json:"response_url"`
+	SessionID   string `json:"session_id"`
 }
 
 type ReserveNow struct {
-	ResponseUrl   string            `json:"response_url"`
-	Token         Token             `json:"token"`
-	ExpiryDate    time.Time         `json:"expiry_date"`
-	ReservationID int               `json:"reservation_id"`
-	LocationID    string            `json:"location_id"`
-	EvseUID       *string           `json:"evse_uid,omitempty"`
-	Metadata      map[string]string `json:"metadata,omitempty"`
+	ResponseUrl   string    `json:"response_url"`
+	Token         Token     `json:"token"`
+	ExpiryDate    time.Time `json:"expiry_date"`
+	ReservationID int       `json:"reservation_id"`
+	LocationID    string    `json:"location_id"`
+	EvseUID       *string   `json:"evse_uid,omitempty"`
 }
 
 type UnlockConnector struct {
-	ResponseUrl string            `json:"response_url"`
-	LocationID  string            `json:"location_id"`
-	EvseUID     string            `json:"evse_uid"`
-	ConnectorID string            `json:"connector_id"`
-	Metadata    map[string]string `json:"metadata,omitempty"`
+	ResponseUrl string `json:"response_url"`
+	LocationID  string `json:"location_id"`
+	EvseUID     string `json:"evse_uid"`
+	ConnectorID string `json:"connector_id"`
 }
 
 type CommandResponse struct {
-	Result   CommandResponseType `json:"result"`
-	Metadata map[string]string   `json:"metadata,omitempty"`
+	Result CommandResponseType `json:"result"`
 }

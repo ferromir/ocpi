@@ -1,6 +1,8 @@
 package ocpi211
 
-import "time"
+import (
+	"time"
+)
 
 type CDR struct {
 	ID               string            `json:"id"`

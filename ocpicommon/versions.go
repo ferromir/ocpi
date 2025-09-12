@@ -1,4 +1,4 @@
-package ocpiversions
+package ocpicommon
 
 type VersionNumber string
 
