@@ -2,14 +2,6 @@ package ocpi221
 
 import "time"
 
-type CDRToken struct {
-	CountryCode string    `json:"country_code"`
-	PartyID     string    `json:"party_id"`
-	UID         string    `json:"uid"`
-	Type        TokenType `json:"type"`
-	ContractID  string    `json:"contract_id"`
-}
-
 type CDRLocation struct {
 	ID                 string          `json:"id"`
 	Name               *string         `json:"name,omitempty"`

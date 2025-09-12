@@ -191,3 +191,11 @@ type Price struct {
 	ExclVat float64 `json:"excl_vat"`
 	InclVat float64 `json:"incl_vat"`
 }
+
+type CDRToken struct {
+	CountryCode string    `json:"country_code"`
+	PartyID     string    `json:"party_id"`
+	UID         string    `json:"uid"`
+	Type        TokenType `json:"type"`
+	ContractID  string    `json:"contract_id"`
+}
