@@ -1,17 +1,5 @@
 package ocpi221
 
-type Role string
-
-const (
-	RoleCPO   Role = "CPO"
-	RoleEMSP  Role = "EMSP"
-	RoleHUB   Role = "HUB"
-	RoleNAP   Role = "NAP"
-	RoleNSP   Role = "NSP"
-	RoleOTHER Role = "OTHER"
-	RoleSCSP  Role = "SCSP"
-)
-
 type CredentialsRole struct {
 	Role            Role            `json:"role"`
 	BusinessDetails BusinessDetails `json:"business_details"`
