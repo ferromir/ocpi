@@ -14,15 +14,15 @@ const (
 
 type Image struct {
 	Url       string        `json:"url"`
-	Thumbnail *string       `json:"thumbnail"`
+	Thumbnail *string       `json:"thumbnail,omitempty"`
 	Category  ImageCategory `json:"category"`
-	Type      string        `json:"type"`
-	Width     *int          `json:"width"`
-	Height    *int          `json:"height"`
+	Type      string        `json:"type,omitempty"`
+	Width     *int          `json:"width,omitempty"`
+	Height    *int          `json:"height,omitempty"`
 }
 
 type BusinessDetails struct {
 	Name    string  `json:"name"`
-	Website *string `json:"website"`
-	Logo    *Image  `json:"logo"`
+	Website *string `json:"website,omitempty"`
+	Logo    *Image  `json:"logo,omitempty"`
 }

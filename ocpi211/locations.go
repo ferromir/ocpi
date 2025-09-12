@@ -155,8 +155,8 @@ type EnergyMix struct {
 	IsGreenEnergy       bool                  `json:"is_green_energy"`
 	EnergySources       []EnergySource        `json:"energy_sources,omitempty"`
 	EnvironmentalImpact []EnvironmentalImpact `json:"environ_impact,omitempty"`
-	SupplierName        *string               `json:"supplier_name"`
-	EnergyProductName   *string               `json:"energy_product_name"`
+	SupplierName        *string               `json:"supplier_name,omitempty"`
+	EnergyProductName   *string               `json:"energy_product_name,omitempty"`
 }
 
 type RegularHours struct {
@@ -179,7 +179,7 @@ type Hours struct {
 
 type StatusSchedule struct {
 	PeriodBegin time.Time  `json:"period_begin"`
-	PeriodEnd   *time.Time `json:"period_end"`
+	PeriodEnd   *time.Time `json:"period_end,omitempty"`
 	Status      EvseStatus `json:"status"`
 }
 
@@ -191,7 +191,7 @@ type GeoLocation struct {
 type AdditionalGeoLocation struct {
 	Latitude  string       `json:"latitude"`
 	Longitude string       `json:"longitude"`
-	Name      *DisplayText `json:"name"`
+	Name      *DisplayText `json:"name,omitempty"`
 }
 
 type DisplayText struct {
@@ -206,21 +206,21 @@ type Connector struct {
 	PowerType          PowerType       `json:"power_type"`
 	Voltage            int             `json:"voltage"`
 	Amperage           int             `json:"amperage"`
-	TariffID           *string         `json:"tariff_id"`
-	TermsAndConditions *string         `json:"terms_and_conditions"`
+	TariffID           *string         `json:"tariff_id,omitempty"`
+	TermsAndConditions *string         `json:"terms_and_conditions,omitempty"`
 	LastUpdated        time.Time       `json:"last_updated"`
 }
 
 type EVSE struct {
 	UID                 string               `json:"uid"`
-	EvseID              *string              `json:"evse_id"`
+	EvseID              *string              `json:"evse_id,omitempty"`
 	Status              EvseStatus           `json:"status"`
 	StatusSchedule      []StatusSchedule     `json:"status_schedule,omitempty"`
 	Capabilities        []Capability         `json:"capabilities,omitempty"`
 	Connectors          []Connector          `json:"connectors"`
-	FloorLevel          *string              `json:"floor_level"`
+	FloorLevel          *string              `json:"floor_level,omitempty"`
 	Coordinates         *GeoLocation         `json:"coordinates"`
-	PhysicalReference   *string              `json:"physical_reference"`
+	PhysicalReference   *string              `json:"physical_reference,omitempty"`
 	Directions          []DisplayText        `json:"directions,omitempty"`
 	ParkingRestrictions []ParkingRestriction `json:"parking_restrictions,omitempty"`
 	Images              []Image              `json:"images,omitempty"`
@@ -230,7 +230,7 @@ type EVSE struct {
 type Location struct {
 	ID                 string                  `json:"id"`
 	Type               LocationType            `json:"type"`
-	Name               *string                 `json:"name"`
+	Name               *string                 `json:"name,omitempty"`
 	Address            string                  `json:"address"`
 	City               string                  `json:"city"`
 	PostalCode         string                  `json:"postal_code"`
@@ -239,14 +239,14 @@ type Location struct {
 	RelatedLocations   []AdditionalGeoLocation `json:"related_locations,omitempty"`
 	Evses              []EVSE                  `json:"evses,omitempty"`
 	Directions         []DisplayText           `json:"directions,omitempty"`
-	Operator           *BusinessDetails        `json:"operator"`
-	Suboperator        *BusinessDetails        `json:"suboperator"`
-	Owner              *BusinessDetails        `json:"owner"`
+	Operator           *BusinessDetails        `json:"operator,omitempty"`
+	Suboperator        *BusinessDetails        `json:"suboperator,omitempty"`
+	Owner              *BusinessDetails        `json:"owner,omitempty"`
 	Facilities         []Facility              `json:"facilities,omitempty"`
-	TimeZone           *string                 `json:"time_zone"` // IANA
-	OpeningTimes       *Hours                  `json:"opening_times"`
-	ChargingWhenClosed *bool                   `json:"charging_when_closed"`
+	TimeZone           *string                 `json:"time_zone,omitempty"` // IANA
+	OpeningTimes       *Hours                  `json:"opening_times,omitempty"`
+	ChargingWhenClosed *bool                   `json:"charging_when_closed,omitempty"`
 	Images             []Image                 `json:"images,omitempty"`
-	EnergyMix          *EnergyMix              `json:"energy_mix"`
+	EnergyMix          *EnergyMix              `json:"energy_mix,omitempty"`
 	LastUpdated        time.Time               `json:"last_updated"`
 }
