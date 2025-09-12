@@ -206,4 +206,5 @@ type Location struct {
 	Images             []Image                 `json:"images,omitempty"`
 	EnergyMix          *EnergyMix              `json:"energy_mix,omitempty"`
 	LastUpdated        time.Time               `json:"last_updated"`
+	Metadata           map[string]string       `json:"metadata,omitempty"`
 }

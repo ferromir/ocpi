@@ -30,15 +30,15 @@ type PriceComponent struct {
 }
 
 type TariffRestriction struct {
-	StartTime   *string         `json:"start_time,omitempty"` // HH:MM
-	EndTime     *string         `json:"end_time,omitempty"`   // HH:MM
-	StartDate   *string         `json:"start_date,omitempty"` // YYYY-MM-DD
+	StartTime   *string         `json:"start_time,omitempty"`
+	EndTime     *string         `json:"end_time,omitempty"`
+	StartDate   *string         `json:"start_date,omitempty"`
 	EndDate     *string         `json:"end_date,omitempty"`
 	MinKWh      *float64        `json:"min_kwh,omitempty"`
 	MaxKWh      *float64        `json:"max_kwh,omitempty"`
 	MinPower    *float64        `json:"min_power,omitempty"`
 	MaxPower    *float64        `json:"max_power,omitempty"`
-	MinDuration *int            `json:"min_duration,omitempty"` // in seconds
+	MinDuration *int            `json:"min_duration,omitempty"`
 	MaxDuration *int            `json:"max_duration,omitempty"`
 	DayOfWeek   []DayOfWeekText `json:"day_of_week,omitempty"`
 }
@@ -49,11 +49,12 @@ type TariffElement struct {
 }
 
 type Tariff struct {
-	ID            string          `json:"id"`
-	Currency      string          `json:"currency"` // ISO 4217
-	TariffAltText []DisplayText   `json:"tariff_alt_text,omitempty"`
-	TariffAltUrl  *string         `json:"tariff_alt_url,omitempty"`
-	Elements      []TariffElement `json:"elements"`
-	EnergyMix     *EnergyMix      `json:"energy_mix,omitempty"`
-	LastUpdated   time.Time       `json:"last_updated"`
+	ID            string            `json:"id"`
+	Currency      string            `json:"currency"`
+	TariffAltText []DisplayText     `json:"tariff_alt_text,omitempty"`
+	TariffAltUrl  *string           `json:"tariff_alt_url,omitempty"`
+	Elements      []TariffElement   `json:"elements"`
+	EnergyMix     *EnergyMix        `json:"energy_mix,omitempty"`
+	LastUpdated   time.Time         `json:"last_updated"`
+	Metadata      map[string]string `json:"metadata,omitempty"`
 }

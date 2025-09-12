@@ -17,8 +17,9 @@ const (
 )
 
 type Response[T any] struct {
-	Data          T          `json:"data"`
-	StatusCode    StatusCode `json:"status_code"`
-	StatusMessage *string    `json:"status_message,omitempty"`
-	Timestamp     time.Time  `json:"timestamp"`
+	Data          T                 `json:"data"`
+	StatusCode    StatusCode        `json:"status_code"`
+	StatusMessage *string           `json:"status_message,omitempty"`
+	Timestamp     time.Time         `json:"timestamp"`
+	Metadata      map[string]string `json:"metadata,omitempty"`
 }
