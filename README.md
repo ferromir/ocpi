@@ -1,4 +1,4 @@
-# OPCI
+# OCPI
 Go types for the [OCPI protocol](https://evroaming.org/ocpi/).
 
 This library provides types for the following OCPI versions:
