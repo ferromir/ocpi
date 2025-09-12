@@ -59,7 +59,7 @@ type Dimension struct {
 
 type ChargingPeriod struct {
 	StartDateTime time.Time   `json:"start_date_time"`
-	Dimensions    []Dimension `json:"dimensions,omitempty"`
+	Dimensions    []Dimension `json:"dimensions"`
 }
 
 type EnvironmentalImpact struct {
