@@ -2,7 +2,17 @@ package ocpi221
 
 import "time"
 
-// import "time"
+type Role string
+
+const (
+	RoleCPO   Role = "CPO"
+	RoleEMSP  Role = "EMSP"
+	RoleHUB   Role = "HUB"
+	RoleNAP   Role = "NAP"
+	RoleNSP   Role = "NSP"
+	RoleOTHER Role = "OTHER"
+	RoleSCSP  Role = "SCSP"
+)
 
 type TokenType string
 
@@ -70,60 +80,6 @@ const (
 	AuthMethodCommand     AuthMethod = "COMMAND"
 	AuthMethodWhitelist   AuthMethod = "WHITELIST"
 )
-
-type Dimension struct {
-	Type   DimensionType `json:"type"`
-	Volume float64       `json:"volume"`
-}
-
-type ChargingPeriod struct {
-	StartDateTime time.Time   `json:"start_date_time"`
-	Dimensions    []Dimension `json:"dimensions"`
-	TariffId      *string     `json:"tariff_id"`
-}
-
-type EnvironmentalImpact struct {
-	Category EnvironmentalImpactCategory `json:"category"`
-	Amount   float64                     `json:"amount"`
-}
-
-type EnergySource struct {
-	Source     EnergySourceCategory `json:"source"`
-	Percentage float64              `json:"percentage"`
-}
-
-type EnergyMix struct {
-	IsGreenEnergy       bool                  `json:"is_green_energy"`
-	EnergySources       []EnergySource        `json:"energy_sources,omitempty"`
-	EnvironmentalImpact []EnvironmentalImpact `json:"environ_impact,omitempty"`
-	SupplierName        *string               `json:"supplier_name,omitempty"`
-	EnergyProductName   *string               `json:"energy_product_name,omitempty"`
-}
-
-type Image struct {
-	Url       string        `json:"url"`
-	Thumbnail *string       `json:"thumbnail,omitempty"`
-	Category  ImageCategory `json:"category"`
-	Type      string        `json:"type,omitempty"`
-	Width     *int          `json:"width,omitempty"`
-	Height    *int          `json:"height,omitempty"`
-}
-
-type BusinessDetails struct {
-	Name    string  `json:"name"`
-	Website *string `json:"website,omitempty"`
-	Logo    *Image  `json:"logo,omitempty"`
-}
-
-type DisplayText struct {
-	Language string `json:"language"`
-	Text     string `json:"text"`
-}
-
-type GeoLocation struct {
-	Latitude  string `json:"latitude"`
-	Longitude string `json:"longitude"`
-}
 
 type ConnectorType string
 
@@ -198,4 +154,58 @@ type CDRToken struct {
 	UID         string    `json:"uid"`
 	Type        TokenType `json:"type"`
 	ContractID  string    `json:"contract_id"`
+}
+
+type BusinessDetails struct {
+	Name    string  `json:"name"`
+	Website *string `json:"website,omitempty"`
+	Logo    *Image  `json:"logo,omitempty"`
+}
+
+type DisplayText struct {
+	Language string `json:"language"`
+	Text     string `json:"text"`
+}
+
+type GeoLocation struct {
+	Latitude  string `json:"latitude"`
+	Longitude string `json:"longitude"`
+}
+
+type Dimension struct {
+	Type   DimensionType `json:"type"`
+	Volume float64       `json:"volume"`
+}
+
+type ChargingPeriod struct {
+	StartDateTime time.Time   `json:"start_date_time"`
+	Dimensions    []Dimension `json:"dimensions"`
+	TariffId      *string     `json:"tariff_id"`
+}
+
+type EnvironmentalImpact struct {
+	Category EnvironmentalImpactCategory `json:"category"`
+	Amount   float64                     `json:"amount"`
+}
+
+type EnergySource struct {
+	Source     EnergySourceCategory `json:"source"`
+	Percentage float64              `json:"percentage"`
+}
+
+type EnergyMix struct {
+	IsGreenEnergy       bool                  `json:"is_green_energy"`
+	EnergySources       []EnergySource        `json:"energy_sources,omitempty"`
+	EnvironmentalImpact []EnvironmentalImpact `json:"environ_impact,omitempty"`
+	SupplierName        *string               `json:"supplier_name,omitempty"`
+	EnergyProductName   *string               `json:"energy_product_name,omitempty"`
+}
+
+type Image struct {
+	Url       string        `json:"url"`
+	Thumbnail *string       `json:"thumbnail,omitempty"`
+	Category  ImageCategory `json:"category"`
+	Type      string        `json:"type,omitempty"`
+	Width     *int          `json:"width,omitempty"`
+	Height    *int          `json:"height,omitempty"`
 }

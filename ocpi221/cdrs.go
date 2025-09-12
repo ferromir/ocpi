@@ -34,19 +34,19 @@ type SignedData struct {
 }
 
 type CDR struct {
-	CountryCode            string      `json:"country_code"`
-	PartyID                string      `json:"party_id"`
-	ID                     string      `json:"id"`
-	StartDateTime          time.Time   `json:"start_date_time"`
-	StopDateTime           time.Time   `json:"stop_date_time"`
-	SessionID              *string     `json:"session_id,omitempty"`
-	CDRToken               CDRToken    `json:"cdr_token"`
-	AuthMethod             AuthMethod  `json:"auth_method"`
-	AuthorizationReference *string     `json:"authorization_reference,omitempty"`
-	CDRLocation            CDRLocation `json:"cdr_location"`
-	MeterID                *string     `json:"meter_id,omitempty"`
-	Currency               string      `json:"currency"`
-	// Tariffs                  []Tariff          `json:"tariffs,omitempty"`
+	CountryCode              string            `json:"country_code"`
+	PartyID                  string            `json:"party_id"`
+	ID                       string            `json:"id"`
+	StartDateTime            time.Time         `json:"start_date_time"`
+	StopDateTime             time.Time         `json:"stop_date_time"`
+	SessionID                *string           `json:"session_id,omitempty"`
+	CDRToken                 CDRToken          `json:"cdr_token"`
+	AuthMethod               AuthMethod        `json:"auth_method"`
+	AuthorizationReference   *string           `json:"authorization_reference,omitempty"`
+	CDRLocation              CDRLocation       `json:"cdr_location"`
+	MeterID                  *string           `json:"meter_id,omitempty"`
+	Currency                 string            `json:"currency"`
+	Tariffs                  []Tariff          `json:"tariffs,omitempty"`
 	ChargingPeriods          []ChargingPeriod  `json:"charging_periods"`
 	SignedData               *SignedData       `json:"signed_data,omitempty"`
 	TotalCost                Price             `json:"total_cost"`
