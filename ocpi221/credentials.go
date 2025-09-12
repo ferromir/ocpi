@@ -10,6 +10,6 @@ type CredentialsRole struct {
 type Credentials struct {
 	Token    string            `json:"token"`
 	Url      string            `json:"url"`
-	Roles    []Role            `json:"roles"`
+	Roles    []CredentialsRole `json:"roles"`
 	Metadata map[string]string `json:"metadata,omitempty"`
 }
