@@ -48,19 +48,20 @@ type PriceComponent struct {
 }
 
 type TariffRestriction struct {
-	StartTime   *string         `json:"start_time,omitempty"`
-	EndTime     *string         `json:"end_time,omitempty"`
-	StartDate   *string         `json:"start_date,omitempty"`
-	EndDate     *string         `json:"end_date,omitempty"`
-	MinKWh      *float64        `json:"min_kwh,omitempty"`
-	MaxKWh      *float64        `json:"max_kwh,omitempty"`
-	MinCurrent  *float64        `json:"min_current,omitempty"`
-	MaxCurrent  *float64        `json:"max_current,omitempty"`
-	MinPower    *float64        `json:"min_power,omitempty"`
-	MaxPower    *float64        `json:"max_power,omitempty"`
-	MinDuration *int            `json:"min_duration,omitempty"`
-	MaxDuration *int            `json:"max_duration,omitempty"`
-	DayOfWeek   []DayOfWeekText `json:"day_of_week,omitempty"`
+	StartTime   *string                     `json:"start_time,omitempty"`
+	EndTime     *string                     `json:"end_time,omitempty"`
+	StartDate   *string                     `json:"start_date,omitempty"`
+	EndDate     *string                     `json:"end_date,omitempty"`
+	MinKWh      *float64                    `json:"min_kwh,omitempty"`
+	MaxKWh      *float64                    `json:"max_kwh,omitempty"`
+	MinCurrent  *float64                    `json:"min_current,omitempty"`
+	MaxCurrent  *float64                    `json:"max_current,omitempty"`
+	MinPower    *float64                    `json:"min_power,omitempty"`
+	MaxPower    *float64                    `json:"max_power,omitempty"`
+	MinDuration *int                        `json:"min_duration,omitempty"`
+	MaxDuration *int                        `json:"max_duration,omitempty"`
+	DayOfWeek   []DayOfWeekText             `json:"day_of_week,omitempty"`
+	Reservation *ReservationRestrictionType `json:"reservation,omitempty"`
 }
 
 type TariffElement struct {
@@ -73,7 +74,7 @@ type Tariff struct {
 	PartyID       string            `json:"party_id"`
 	ID            string            `json:"id"`
 	Currency      string            `json:"currency"`
-	Type          TariffType        `json:"type"`
+	Type          *TariffType       `json:"type,omitempty"`
 	TariffAltText []DisplayText     `json:"tariff_alt_text,omitempty"`
 	TariffAltUrl  *string           `json:"tariff_alt_url,omitempty"`
 	MinPrice      *Price            `json:"min_price,omitempty"`

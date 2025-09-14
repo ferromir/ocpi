@@ -1,87 +1,103 @@
 package ocpi230
 
-// import "time"
+import "time"
 
-// type TariffType string
+type TaxIncluded string
 
-// const (
-// 	TariffTypeAdHocPayment TariffType = "AD_HOC_PAYMENT"
-// 	TariffTypeProfileCheap TariffType = "PROFILE_CHEAP"
-// 	TariffTypeProfileFast  TariffType = "PROFILE_FAST"
-// 	TariffTypeProfileGreen TariffType = "PROFILE_GREEN"
-// 	TariffTypeRegular      TariffType = "REGULAR"
-// )
+const (
+	TaxIncludedYes           TaxIncluded = "YES"
+	TaxIncludedNo            TaxIncluded = "NO"
+	TaxIncludedNotApplicable TaxIncluded = "N/A"
+)
 
-// type TariffDimensionType string
+type TariffType string
 
-// const (
-// 	TariffDimensionTypeEnergy      TariffDimensionType = "ENERGY"
-// 	TariffDimensionTypeFlat        TariffDimensionType = "FLAT"
-// 	TariffDimensionTypeParkingTime TariffDimensionType = "PARKING_TIME"
-// 	TariffDimensionTypeTime        TariffDimensionType = "TIME"
-// )
+const (
+	TariffTypeAdHocPayment TariffType = "AD_HOC_PAYMENT"
+	TariffTypeProfileCheap TariffType = "PROFILE_CHEAP"
+	TariffTypeProfileFast  TariffType = "PROFILE_FAST"
+	TariffTypeProfileGreen TariffType = "PROFILE_GREEN"
+	TariffTypeRegular      TariffType = "REGULAR"
+)
 
-// type DayOfWeekText string
+type TariffDimensionType string
 
-// const (
-// 	DayOfWeekTextMonday    DayOfWeekText = "MONDAY"
-// 	DayOfWeekTextTuesday   DayOfWeekText = "TUESDAY"
-// 	DayOfWeekTextWednesday DayOfWeekText = "WEDNESDAY"
-// 	DayOfWeekTextThursday  DayOfWeekText = "THURSDAY"
-// 	DayOfWeekTextFriday    DayOfWeekText = "FRIDAY"
-// 	DayOfWeekTextSaturday  DayOfWeekText = "SATURDAY"
-// 	DayOfWeekTextSunday    DayOfWeekText = "SUNDAY"
-// )
+const (
+	TariffDimensionTypeEnergy      TariffDimensionType = "ENERGY"
+	TariffDimensionTypeFlat        TariffDimensionType = "FLAT"
+	TariffDimensionTypeParkingTime TariffDimensionType = "PARKING_TIME"
+	TariffDimensionTypeTime        TariffDimensionType = "TIME"
+)
 
-// type ReservationRestrictionType string
+type DayOfWeekText string
 
-// const (
-// 	ReservationRestrictionTypeReservation        ReservationRestrictionType = "RESERVATION"
-// 	ReservationRestrictionTypeReservationExpires ReservationRestrictionType = "RESERVATION_EXPIRES"
-// )
+const (
+	DayOfWeekTextMonday    DayOfWeekText = "MONDAY"
+	DayOfWeekTextTuesday   DayOfWeekText = "TUESDAY"
+	DayOfWeekTextWednesday DayOfWeekText = "WEDNESDAY"
+	DayOfWeekTextThursday  DayOfWeekText = "THURSDAY"
+	DayOfWeekTextFriday    DayOfWeekText = "FRIDAY"
+	DayOfWeekTextSaturday  DayOfWeekText = "SATURDAY"
+	DayOfWeekTextSunday    DayOfWeekText = "SUNDAY"
+)
 
-// type PriceComponent struct {
-// 	Type     TariffDimensionType `json:"type"`
-// 	Price    float64             `json:"price"`
-// 	Vat      *float64            `json:"vat,omitempty"`
-// 	StepSize int                 `json:"step_size"`
-// }
+type ReservationRestrictionType string
 
-// type TariffRestriction struct {
-// 	StartTime   *string         `json:"start_time,omitempty"`
-// 	EndTime     *string         `json:"end_time,omitempty"`
-// 	StartDate   *string         `json:"start_date,omitempty"`
-// 	EndDate     *string         `json:"end_date,omitempty"`
-// 	MinKWh      *float64        `json:"min_kwh,omitempty"`
-// 	MaxKWh      *float64        `json:"max_kwh,omitempty"`
-// 	MinCurrent  *float64        `json:"min_current,omitempty"`
-// 	MaxCurrent  *float64        `json:"max_current,omitempty"`
-// 	MinPower    *float64        `json:"min_power,omitempty"`
-// 	MaxPower    *float64        `json:"max_power,omitempty"`
-// 	MinDuration *int            `json:"min_duration,omitempty"`
-// 	MaxDuration *int            `json:"max_duration,omitempty"`
-// 	DayOfWeek   []DayOfWeekText `json:"day_of_week,omitempty"`
-// }
+const (
+	ReservationRestrictionTypeReservation        ReservationRestrictionType = "RESERVATION"
+	ReservationRestrictionTypeReservationExpires ReservationRestrictionType = "RESERVATION_EXPIRES"
+)
 
-// type TariffElement struct {
-// 	PriceComponents []PriceComponent   `json:"price_components"`
-// 	Restrictions    *TariffRestriction `json:"restrictions,omitempty"`
-// }
+type PriceComponent struct {
+	Type     TariffDimensionType `json:"type"`
+	Price    float64             `json:"price"`
+	Vat      *float64            `json:"vat,omitempty"`
+	StepSize int                 `json:"step_size"`
+}
 
-// type Tariff struct {
-// 	CountryCode   string            `json:"country_code"`
-// 	PartyID       string            `json:"party_id"`
-// 	ID            string            `json:"id"`
-// 	Currency      string            `json:"currency"`
-// 	Type          TariffType        `json:"type"`
-// 	TariffAltText []DisplayText     `json:"tariff_alt_text,omitempty"`
-// 	TariffAltUrl  *string           `json:"tariff_alt_url,omitempty"`
-// 	MinPrice      *Price            `json:"min_price,omitempty"`
-// 	MaxPrice      *Price            `json:"max_price,omitempty"`
-// 	Elements      []TariffElement   `json:"elements"`
-// 	StartDateTime *time.Time        `json:"start_date_time,omitempty"`
-// 	EndDateTime   *time.Time        `json:"end_date_time,omitempty"`
-// 	EnergyMix     *EnergyMix        `json:"energy_mix,omitempty"`
-// 	LastUpdated   time.Time         `json:"last_updated"`
-// 	Metadata      map[string]string `json:"metadata,omitempty"`
-// }
+type TariffRestriction struct {
+	StartTime   *string                     `json:"start_time,omitempty"`
+	EndTime     *string                     `json:"end_time,omitempty"`
+	StartDate   *string                     `json:"start_date,omitempty"`
+	EndDate     *string                     `json:"end_date,omitempty"`
+	MinKWh      *float64                    `json:"min_kwh,omitempty"`
+	MaxKWh      *float64                    `json:"max_kwh,omitempty"`
+	MinCurrent  *float64                    `json:"min_current,omitempty"`
+	MaxCurrent  *float64                    `json:"max_current,omitempty"`
+	MinPower    *float64                    `json:"min_power,omitempty"`
+	MaxPower    *float64                    `json:"max_power,omitempty"`
+	MinDuration *int                        `json:"min_duration,omitempty"`
+	MaxDuration *int                        `json:"max_duration,omitempty"`
+	DayOfWeek   []DayOfWeekText             `json:"day_of_week,omitempty"`
+	Reservation *ReservationRestrictionType `json:"reservation,omitempty"`
+}
+
+type TariffElement struct {
+	PriceComponents []PriceComponent   `json:"price_components"`
+	Restrictions    *TariffRestriction `json:"restrictions,omitempty"`
+}
+
+type PriceLimit struct {
+	BeforeTaxes float32  `json:"before_taxes"`
+	AfterTaxes  *float32 `json:"after_taxes,omitempty"`
+}
+
+type Tariff struct {
+	CountryCode        string            `json:"country_code"`
+	PartyID            string            `json:"party_id"`
+	ID                 string            `json:"id"`
+	Currency           string            `json:"currency"`
+	Type               *TariffType       `json:"type,omitempty"`
+	TariffAltText      []DisplayText     `json:"tariff_alt_text,omitempty"`
+	TariffAltUrl       *string           `json:"tariff_alt_url,omitempty"`
+	MinPrice           *PriceLimit       `json:"min_price,omitempty"`
+	MaxPrice           *PriceLimit       `json:"max_price,omitempty"`
+	PreauthorizeAmount *float32          `json:"preauthorize_amount,omitempty"`
+	Elements           []TariffElement   `json:"elements"`
+	TaxIncluded        TaxIncluded       `json:"tax_included"`
+	StartDateTime      *time.Time        `json:"start_date_time,omitempty"`
+	EndDateTime        *time.Time        `json:"end_date_time,omitempty"`
+	EnergyMix          *EnergyMix        `json:"energy_mix,omitempty"`
+	LastUpdated        time.Time         `json:"last_updated"`
+	Metadata           map[string]string `json:"metadata,omitempty"`
+}
