@@ -31,4 +31,4 @@ var token3 ocpi230.Token
 * Case insensitive and sensitive strings are typed the same (as string).
 * Validation of structs is out of the scope of this library.
 * An **optional** "metadata" field has been added to the entities despite this field not being specified in the protocol. The intention is to allow parties to exchange data beyond the protocol.
-* The type described as "number" in the protocol is represented by a float32.
+* The type named "number" in the protocol is represented by a float32.
