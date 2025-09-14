@@ -56,7 +56,7 @@ const (
 
 type Dimension struct {
 	Type   DimensionType `json:"type"`
-	Volume float64       `json:"volume"`
+	Volume float32       `json:"volume"`
 }
 
 type ChargingPeriod struct {
@@ -66,12 +66,12 @@ type ChargingPeriod struct {
 
 type EnvironmentalImpact struct {
 	Source     EnvironmentalImpactCategory `json:"source"`
-	Percentage float64                     `json:"percentage"`
+	Percentage float32                     `json:"percentage"`
 }
 
 type EnergySource struct {
 	Source     EnergySourceCategory `json:"source"`
-	Percentage float64              `json:"percentage"`
+	Percentage float32              `json:"percentage"`
 }
 
 type EnergyMix struct {

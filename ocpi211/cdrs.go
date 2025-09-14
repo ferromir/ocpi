@@ -15,10 +15,10 @@ type CDR struct {
 	Currency         string            `json:"currency"`
 	Tariffs          []Tariff          `json:"tariffs,omitempty"`
 	ChargingPeriods  []ChargingPeriod  `json:"charging_periods"`
-	TotalCost        float64           `json:"total_cost"`
-	TotalEnergy      float64           `json:"total_energy"`
-	TotalTime        float64           `json:"total_time"`
-	TotalParkingTime *float64          `json:"total_parking_time,omitempty"`
+	TotalCost        float32           `json:"total_cost"`
+	TotalEnergy      float32           `json:"total_energy"`
+	TotalTime        float32           `json:"total_time"`
+	TotalParkingTime *float32          `json:"total_parking_time,omitempty"`
 	Remark           *string           `json:"remark,omitempty"`
 	LastUpdated      time.Time         `json:"last_updated"`
 	Metadata         map[string]string `json:"metadata,omitempty"`

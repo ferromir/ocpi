@@ -51,11 +51,11 @@ type CDR struct {
 	SignedData               *SignedData       `json:"signed_data,omitempty"`
 	TotalCost                Price             `json:"total_cost"`
 	TotalFixedCost           *Price            `json:"total_fixed_cost,omitempty"`
-	TotalEnergy              float64           `json:"total_energy"`
+	TotalEnergy              float32           `json:"total_energy"`
 	TotalEnergyCost          *Price            `json:"total_energy_cost,omitempty"`
-	TotalTime                float64           `json:"total_time"`
+	TotalTime                float32           `json:"total_time"`
 	TotalTimeCost            *Price            `json:"total_time_cost,omitempty"`
-	TotalParkingTime         *float64          `json:"total_parking_time,omitempty"`
+	TotalParkingTime         *float32          `json:"total_parking_time,omitempty"`
 	TotalParkingCost         *Price            `json:"total_parking_cost,omitempty"`
 	TotalReservationCost     *Price            `json:"total_reservation_cost,omitempty"`
 	Remark                   *string           `json:"remark,omitempty"`

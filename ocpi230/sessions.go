@@ -18,7 +18,7 @@ type Session struct {
 	ID                     string            `json:"id"`
 	StartDateTime          time.Time         `json:"start_date_time"`
 	EndDateTime            *time.Time        `json:"end_date_time,omitempty"`
-	KWh                    float64           `json:"kwh"`
+	KWh                    float32           `json:"kwh"`
 	CDRToken               CDRToken          `json:"cdr_token"`
 	AuthMethod             AuthMethod        `json:"auth_method"`
 	AuthorizationReference *string           `json:"authorization_reference,omitempty"`

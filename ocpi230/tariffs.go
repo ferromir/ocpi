@@ -50,8 +50,8 @@ const (
 
 type PriceComponent struct {
 	Type     TariffDimensionType `json:"type"`
-	Price    float64             `json:"price"`
-	Vat      *float64            `json:"vat,omitempty"`
+	Price    float32             `json:"price"`
+	Vat      *float32            `json:"vat,omitempty"`
 	StepSize int                 `json:"step_size"`
 }
 
@@ -60,12 +60,12 @@ type TariffRestriction struct {
 	EndTime     *string                     `json:"end_time,omitempty"`
 	StartDate   *string                     `json:"start_date,omitempty"`
 	EndDate     *string                     `json:"end_date,omitempty"`
-	MinKWh      *float64                    `json:"min_kwh,omitempty"`
-	MaxKWh      *float64                    `json:"max_kwh,omitempty"`
-	MinCurrent  *float64                    `json:"min_current,omitempty"`
-	MaxCurrent  *float64                    `json:"max_current,omitempty"`
-	MinPower    *float64                    `json:"min_power,omitempty"`
-	MaxPower    *float64                    `json:"max_power,omitempty"`
+	MinKWh      *float32                    `json:"min_kwh,omitempty"`
+	MaxKWh      *float32                    `json:"max_kwh,omitempty"`
+	MinCurrent  *float32                    `json:"min_current,omitempty"`
+	MaxCurrent  *float32                    `json:"max_current,omitempty"`
+	MinPower    *float32                    `json:"min_power,omitempty"`
+	MaxPower    *float32                    `json:"max_power,omitempty"`
 	MinDuration *int                        `json:"min_duration,omitempty"`
 	MaxDuration *int                        `json:"max_duration,omitempty"`
 	DayOfWeek   []DayOfWeekText             `json:"day_of_week,omitempty"`

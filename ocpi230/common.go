@@ -153,7 +153,7 @@ type TaxAmount struct {
 }
 
 type Price struct {
-	BeforeTaxes float64     `json:"before_taxes"`
+	BeforeTaxes float32     `json:"before_taxes"`
 	Taxes       []TaxAmount `json:"taxes,omitempty"`
 }
 
@@ -183,7 +183,7 @@ type GeoLocation struct {
 
 type Dimension struct {
 	Type   DimensionType `json:"type"`
-	Volume float64       `json:"volume"`
+	Volume float32       `json:"volume"`
 }
 
 type ChargingPeriod struct {
@@ -194,12 +194,12 @@ type ChargingPeriod struct {
 
 type EnvironmentalImpact struct {
 	Category EnvironmentalImpactCategory `json:"category"`
-	Amount   float64                     `json:"amount"`
+	Amount   float32                     `json:"amount"`
 }
 
 type EnergySource struct {
 	Source     EnergySourceCategory `json:"source"`
-	Percentage float64              `json:"percentage"`
+	Percentage float32              `json:"percentage"`
 }
 
 type EnergyMix struct {
