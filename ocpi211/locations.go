@@ -200,7 +200,7 @@ type Location struct {
 	Suboperator        *BusinessDetails        `json:"suboperator,omitempty"`
 	Owner              *BusinessDetails        `json:"owner,omitempty"`
 	Facilities         []Facility              `json:"facilities,omitempty"`
-	TimeZone           *string                 `json:"time_zone,omitempty"` // IANA
+	TimeZone           *string                 `json:"time_zone,omitempty"`
 	OpeningTimes       *Hours                  `json:"opening_times,omitempty"`
 	ChargingWhenClosed *bool                   `json:"charging_when_closed,omitempty"`
 	Images             []Image                 `json:"images,omitempty"`
