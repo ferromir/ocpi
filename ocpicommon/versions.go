@@ -8,7 +8,7 @@ const (
 	VersionNumber2_1_1 VersionNumber = "2.1.1"
 	VersionNumber2_2   VersionNumber = "2.2"
 	VersionNumber2_2_1 VersionNumber = "2.2.1"
-	VersionNumber2_3   VersionNumber = "2.3"
+	VersionNumber2_3_0 VersionNumber = "2.3.0"
 )
 
 type InterfaceRole string
