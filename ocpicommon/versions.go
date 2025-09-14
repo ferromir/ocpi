@@ -30,6 +30,7 @@ const (
 	ModuleIDSessions                   ModuleID = "sessions"
 	ModuleIDTariffs                    ModuleID = "tariffs"
 	ModuleIDTokens                     ModuleID = "tokens"
+	ModuleIDPayments                   ModuleID = "payments"
 )
 
 type Version struct {
