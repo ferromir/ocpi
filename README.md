@@ -1,4 +1,7 @@
 # OCPI
+
+![Build](https://github.com/ferromir/ocpi/actions/workflows/go.yml/badge.svg)
+
 Go types for the [OCPI protocol](https://evroaming.org/ocpi/).
 
 This library provides types for the following OCPI versions:
