@@ -11,13 +11,6 @@ const (
 	WhitelistTypeNever          WhitelistType = "NEVER"
 )
 
-type TokenAuthIDType string
-
-const (
-	TokenAuthIDTypeUID    TokenAuthIDType = "UID"
-	TokenAuthIDTypeAuthID TokenAuthIDType = "AUTH_ID"
-)
-
 type ProfileType string
 
 const (

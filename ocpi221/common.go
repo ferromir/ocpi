@@ -144,8 +144,8 @@ const (
 )
 
 type Price struct {
-	ExclVat float32 `json:"excl_vat"`
-	InclVat float32 `json:"incl_vat"`
+	ExclVat float32  `json:"excl_vat"`
+	InclVat *float32 `json:"incl_vat"`
 }
 
 type CDRToken struct {

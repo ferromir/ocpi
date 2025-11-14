@@ -18,13 +18,6 @@ const (
 	WhitelistTypeNever          WhitelistType = "NEVER"
 )
 
-type TokenAuthIDType string
-
-const (
-	TokenAuthIDTypeUID    TokenAuthIDType = "UID"
-	TokenAuthIDTypeAuthID TokenAuthIDType = "AUTH_ID"
-)
-
 type Token struct {
 	UID          string            `json:"uid"`
 	Type         TokenType         `json:"type"`
@@ -33,7 +26,7 @@ type Token struct {
 	Issuer       string            `json:"issuer"`
 	Valid        bool              `json:"valid"`
 	Whitelist    WhitelistType     `json:"whitelist"`
-	LanguageCode *string           `json:"language_code,omitempty"`
+	Language     *string           `json:"language_code,omitempty"`
 	LastUpdated  time.Time         `json:"last_updated"`
 	Metadata     map[string]string `json:"metadata,omitempty"`
 }
