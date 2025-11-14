@@ -26,7 +26,7 @@ type Token struct {
 	Issuer       string            `json:"issuer"`
 	Valid        bool              `json:"valid"`
 	Whitelist    WhitelistType     `json:"whitelist"`
-	Language     *string           `json:"language_code,omitempty"`
+	Language     *string           `json:"language,omitempty"`
 	LastUpdated  time.Time         `json:"last_updated"`
 	Metadata     map[string]string `json:"metadata,omitempty"`
 }
